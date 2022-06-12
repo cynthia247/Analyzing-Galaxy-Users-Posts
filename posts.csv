@@ -1,0 +1,1076 @@
+,user_id,post_title,post_desc
+0,6,"
+Troubleshooting resources for errors or unexpected results
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Check to see if there is a known usegalaxy.* server issue., If the server was down when you first ran your job, try a rerun once back up. A rerun can also eliminate transient server issues too short in duration to trigger a statuspage warning., Next, start by reviewing the troubleshooting FAQ. Common reasons and solutions for tool errors are explained. Most job errors can be resolved by correcting your input data’s format/content. Others indicate a tool setting/parameter problem. This summary FAQ links to most other support FAQs., If you cannot determine how to fix a data/input problem, search existing Q&A topics, support FAQs, and other Galaxy resources. Someone else may have had the same problem with a posted solution. Many tools will have ongoing usage discussions. The most common data/usage issues have a dedicated FAQ., If you are unsure about how to correct a tool usage problem, review the tool help and prior Q&A., If that is not enough tool usage information to solve your problem, try comparing your analysis methods with those in our tutorials:, If you think you found a software bug, review the issue FAQ and linked known issues to find out if it has already been reported and to learn how to report a new problem:, If you need help after troubleshooting on your own, or would like a suspected bug vetted, please let us know by creating a new post to this site. The more details you include, the more help we can offer. For example: include the exact tool name/version (found at the top of the tool form), input data type/source, error details, screenshots., Thanks! The Galaxy team & community, pinned globally on Nov 27, '18]"
+1,-1,"
+Welcome to Galaxy Community Help
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, For assistance with a specific Galaxy server please post into appropriate category., closed on Nov 20, '18]"
+2,3550,"
+How to include new variable modifications which are absent in the list?
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi Galaxy team,, I need to include new variable modifications which are absent in the list. Is it possible to add these modifications to Galaxy? Like in the MaxQuant configuration tab?, With best regards,, Arman, Hi @Arman_Kulyyassov,
+do you mean to modify some tools in order to include additional options?, Regards, Thank you very much for your reply.
+I downloaded MaxQuant (version  1.6.6.0)  to my desktop computer and included two new variable modifications Glyceroyl-Lys (composition H(4) O C(3)) and PhosphoGlyceroyl-Lys (composition H(5) O(6) C(3) P) on the configuration tab. Do you have the same options to include new protein modifications on MaxQuant in Galaxy?
+, , Yes,
+in that case, you need to open a Pull Request in order to include those modifications in this file tools-galaxyp/macros.xml at master · galaxyproteomics/tools-galaxyp · GitHub 1. Let me know if you need any additional help., Regards, Dear Cristóbal Gallardo,, thank you very much for your offer. Unfortunately, I am not an IT specialist. Please include the following protein modifications to the list of variable modifications:, With best regards,, Arman]"
+3,3560,"
+Diffbind ‘no diff/ly accessible sites’ error?
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello, I’m running a diffbind operation between two conditions from an ATAC-seq experiment with two replicates in each. However, I get an error message resulting in my output files being buggy/red., Warning message:
+In Sys.setlocale(“LC_MESSAGES”, “en_US.UTF-8”) :
+OS reports request to set locale to “en_US.UTF-8” cannot be honored
+6hVC1_peaks_narrowPeak 6hVC1_peaks_narrowPeak  VC  NA raw
+6hVC2_peaks_narrowPeak 6hVC2_peaks_narrowPeak  VC  NA raw
+6hdTAG2_peaks_narrowPeak 6hdTAG2_peaks_narrowPeak  dTAG  NA raw
+6hdTAG3_peaks_narrowPeak 6hdTAG3_peaks_narrowPeak  dTAG  NA raw
+converting counts to integer mode
+gene-wise dispersion estimates
+mean-dispersion relationship
+final dispersion estimates
+Warning message:
+No sites above threshold
+Error in pv.getPlotData(DBA, attributes = attributes, contrast = contrast,  :
+Unable to plot – no sites within threshold
+Calls: dba.plotHeatmap → pv.getPlotData, Does “No sites above threshold” in the error message just suggest that there were no differentially accessible sites (which I was expecting)? If so, why does the output seem to suggest there was an error in the process, rather than just returning an ‘empty’ interval file or some ‘blank’ result? I’m quite new to using diffbind on Galaxy, so I’m not too familiar with the various error messages that might occur. Thank you!, Does “No sites above threshold” in the error message just suggest that there were no differentially accessible sites (which I was expecting)?, Yes, that is what the message means., If so, why does the output seem to suggest there was an error in the process, rather than just returning an ‘empty’ interval file or some ‘blank’ result?, The tool wrapper is around a Bioconductor tool written in R. Trapping errors for these cases usually relies on the output from R, and the same tool/inputs would likely fail with the same message if run directly., I’m quite new to using diffbind on Galaxy, so I’m not too familiar with the various error messages that might occur. Thank you!, No problem! Some tools run in Galaxy will produce more meaningful messages than others. Much depends on how error trapping was implemented in the original 3rd party tool. , The GTN FAQs here can help. Search this page with keywords or error messages:, Collection of tutorials developed and maintained by the w..., And this specific FAQ explains how to find all of the failure details:, Collection of tutorials developed and maintained by the w...]"
+4,3560,"
+Diffbind error with different replicate numbers
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi, I’m running diffbind one some ATAC-sequencing data and have been successful when the number of replicates has been equal between my two conditions, but I get an error message when I have, for example, two replicates in one condition and three in the other condition. Could I be doing something wrong or is Galaxy not configured to carry out a 2-vs-3 (or any non-equal-replicates-between-conditions) diffbind analysis? This is the message I get below:, Warning message:
+In Sys.setlocale(“LC_MESSAGES”, “en_US.UTF-8”) :
+OS reports request to set locale to “en_US.UTF-8” cannot be honored
+Error in data.frame(SampleID = samples, Condition = groups, bamReads = bams,  :
+arguments imply diff, Thanks in advance!, If it helps, here is a link to the history in question: the files that were my input are #1-13 and the produced error files are #14-18: Galaxy | Accessible History | 12h-vs-6h-dTAG, Hi @alexbisias, Could I be doing something wrong or is Galaxy not configured to carry out a 2-vs-3 (or any non-equal-replicates-between-conditions) diffbind analysis?, It is the second reason. The way the tool form is designed requires that there is a 1-1 relationship between pairs of peak and read bam inputs, and control bam inputs are optional., Help on the tool form covers more details, this is a summary below. Please scroll down on the tool form to the What it does section for all the help., Specify the Read BAM files used in the Peak calling. The input order of the BAM files for the samples MUST match the input order of the peaks files., If specifying a control BAM file, all samples are required to specify one, see Help section below. The input order of the BAM files for the samples MUST match the input order of the peaks files.]"
+5,3562,"
+Pre-processing of Single-Cell RNA Data Tutorial Troubleshooting
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, I have worked through the Single-Batch Processing hand-on tutorial three times and consistently get different results than what the tutorial says. After the UMI-tool count (last step of the Single-Batch Processing), the tutorial states there should be 2,140 lines in the matrix and 180 columns, but I am consistently getting 1,972 lines and 50 columns., Is anyone else experiencing this?, Does anyone have any ideas why this is happening? I made sure to use the Tutorial Mode on galaxy, so when I would select the next step it took me to the appropriate tool and version., Hi @swren,
+I contacted the people who developed the training; probably they will provide you an answer in a few days., Best regards!]"
+6,3559,"
+multiple RNA Star jobs waiting to run
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Dear Galaxy Team,, currently there are multiple jobs in my waiting list to run in RNA Star and it is not going on for more than 24h. Is there a problem with the tool?, Hi @Jenny19,, the jobs will run when resources become available. Public servers utilized common resources shared with everyone else working at the same place; please be patient., Regards!]"
+7,3544,"
+How to improve taxonomic classification resolution of 16S rDNA, nanopore sequencing?
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, I’ve been learning to process my 16S rDNA nanopore sequences with the Galaxy workflow from the tutorial “16S Microbial analysis with Nanopore data” (the data in the tutorial is corrupted by the way)., The sequences I have are from a synthetic community standard, so I know what to look for and at what abundances. Another member of my group has analysed this data with a non-galaxy approach and was able to get genus-level information., My results have been very low resolution in comparison. I have tried Kraken2 with different databases as reference, but would love some help or ideas as to how I could improve my results, ideally to as many genus classifications as possible, or family. Anything would be helpful!!!, Hi @Lid,
+currently, we are working on a new tool for that goal Add PathoScope by gallardoalba · Pull Request #1212 · bgruening/galaxytools · GitHub, however, is still not available. It would be great if you could provide me with some details about the pipeline that your colleague followed since it could be useful for us in order to improve the training material., Best regards, Hello,, Unfortunately my colleague used EPI2ME, which is opaque. This is why I am looking into other methods, and they are as well. But great to know there is development about this, sorry I can’t be of more help!, Lydia]"
+8,2997,"
+Make a repository installable
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi everybody. I’m trying to upload my tool in the public tool shed following this guide (not using Planemo): How to publish a tool in the Tool Shed - Galaxy Community Hub 1, In my local instance of Galaxy, in the admin tab I can see the repository but it says that it is not possible to install it, which is confirmed also by the repository tab in the tool shed., I just loaded a tar file with the xml and the python code of the tool, am I missing something else?
+Thank you for the help, Hi @Andrea_Furlani,
+does it include the .shed.yml file? Could you share the repository link with me?, Regards, Hi, this is the repository link (just a test):, https://toolshed.g2.bx.psu.edu/view/andrea.furlani/infr_test/bf610d149a69 1, It doesn’t include a yml file, just the .py codes and .xml definitions, Hi, I found an error while validating the sys_heatmap.xml file:, I think that it is the problem; I recommend you to use planemo for developing the Galaxy wrapper., Regards, Thank you for the suggestion. I’m using planemo and I solved the error indicated in your reply, but still the lint fails retrieving this message:, Regarding the warnings: I saw that also in other tools already present in the toolshed the version of the requirements is not always indicated and the citation section often is not present or inserted in the help since they are not using bibtex or doi citations types., In the folder there are: tool.py , tool.xml , .shed.yml
+Here’s the temporary link to the repository I loaded manually., I found the solution by using the following command for lint:, In this way it will not compile only in presence of errors.]"
+9,1484,"
+Job failure CutAdapt
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, I keep getting errors when trimming my data with Cutadapt. Please find the error below.
+I ran exactly the same thing last week with the galaxy.org server and there it worked., The server could not complete this request. Please verify your parameter settings, retry submission and contact the Galaxy Team if this error persists. A transcript of the submitted data is shown below.
+{
+“history_id”: “ff75df6a1c92239a”,
+“tool_id”: “toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/4.0+galaxy0”,
+“tool_version”: “4.0+galaxy0”,
+“inputs”: {
+“library|type”: “paired_collection”,
+“library|input_1”: {
+“values”: [
+{
+“id”: “72822dfb6c647067”,
+“hid”: 21,
+“name”: “Paired_List_NAPC2_FASTA”,
+“src”: “hdca”,
+“tags”: ,
+“map_over_type”: “paired”
+}
+],
+“batch”: true
+},
+“library|r1|cut”: “0”,
+“library|r2|cut2”: “0”,
+“library|r2|quality_cutoff2”: “”,
+“adapter_options|action”: “trim”,
+“adapter_options|internal”: “”,
+“adapter_options|error_rate”: “0.1”,
+“adapter_options|no_indels”: “false”,
+“adapter_options|times”: “1”,
+“adapter_options|overlap”: “3”,
+“adapter_options|match_read_wildcards”: "" "",
+“adapter_options|revcomp”: “false”,
+“filter_options|discard_trimmed”: “false”,
+“filter_options|discard_untrimmed”: “false”,
+“filter_options|minimum_length”: “20”,
+“filter_options|maximum_length”: “”,
+“filter_options|length_R2_options|length_R2_status”: “False”,
+“filter_options|max_n”: “”,
+“filter_options|pair_filter”: “any”,
+“filter_options|max_expected_errors”: “”,
+“filter_options|discard_cassava”: “false”,
+“read_mod_options|quality_cutoff”: “20”,
+“read_mod_options|nextseq_trim”: “0”,
+“read_mod_options|trim_n”: “false”,
+“read_mod_options|strip_suffix”: “”,
+“read_mod_options|shorten_options|shorten_values”: “False”,
+“read_mod_options|length_tag”: “”,
+“read_mod_options|rename”: “”,
+“read_mod_options|zero_cap”: “false”,
+“output_selector”: [
+“report”
+]
+}
+}, Hi @Jens_Posma,
+could you try again by using the tool version 3.7? It is the version available in usegalaxy.org. Perhaps there’s a bug in the last update (version 4.0)., Regards, yes at .org it works fine]"
+10,1841,"
+Error in Join two datasets in Galaxy Docker 20.05
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Now, I installed Galaxy Docker 20.05 and tried to join two datasets using ’ Join Two Datasets side by side 2.1.3’. I can’t get the tool to run it. Error like this : 'No module named ‘galaxy’. After searching previous list, I noticed that there were technical problem in this module and fixed it now. But, this fault is not fixed in Docker image 20.05. So, I tried to download other version of ‘join two datasets side by side’ on tool shed and didn’t find anything. Are there any other option to solve this problem?, Is this the only tool failing like this?, Hi everyone! I had this same problem. But, I have a recent Galaxy installed in our local server, but not by the Docker., For me, the error message is:, galaxy/tools/filters/join.py"", line 19, in 
+from galaxy.util import stringify_dictionary_keys
+ModuleNotFoundError: No module named ‘galaxy’, Any tip to fix it?
+Thanks, Hi everyone,, I am facing same problem. @lfdeoliveira did you solve this?, I’d highly appreciate if anyone can comment down the solution below.]"
+11,3557,"
+Error using “Join two datasets” tool on galaxy installed locally.
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi,
+I am running galaxy locally. I am trying to use “Join two datasets tool”, I am unable to use this tool on my local server. However, this tool still works on galaxy server., I’d highly appreciate your help., error:
+Traceback (most recent call last):
+File “/galaxy/tools/filters/join.py”, line 19, in 
+from galaxy.util import stringify_dictionary_keys
+ModuleNotFoundError: No module named ‘galaxy’]"
+12,853,"
+Load function ‘load’ not found. when loading MSA viewer on usegalaxy.org
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, I get the following error when trying to load any multiple sequence alignment on .org, , Hi @Peter_van_Heusden,
+could you provide me with some additional details about how to reproduce this error?, Regards, Simple to reproduce - upload a FASTA format MSA, go to Visualize this data, click Multiple Sequence Alignment viewer and the error occurs. This is on usegalaxy.org, doesn’t happen on e.g. usegalaxy.org.au.]"
+13,3530,"
+Prokka_error_message_Argument “1.7.8”
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, I try to run Prokka but I receive an error message:
+Argument “Argument “1.7.8” isn’t numeric in numeric lt (<) at /usr/local/bin/prokka line 259.
+Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/corral4/main/jobs/043/189/43189962/_job_tmp -Xmx28g -Xms256m
+[02:16:27] Please rename your contigs OR try '–centre X --complia” isn’t numeric in numeric lt (<) at /usr/local/bin/prokka line 259.
+Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/corral4/main/jobs/043/189/43189962/_job_tmp -Xmx28g -Xms256m
+[02:16:27] Please rename your contigs OR try '–centre X --complia, Hi @Dr_Ahmed_Hammad,
+could you share your Galaxy history with me? I’ll have a look at it. My email address is ., Regards]"
+14,1799,"
+roary core genome alignment file is empty.
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Good morning,
+I run roary for 59 genomes, I got 600 core genes, but the alignment file is empty.
+can someone please help me understand why, I ran roary two times and I got the same result.
+thank you, for update, I rerun with roary tool in galaxy europe, and got the same result empty file for alignment, I check my gff files no problem with them, if some can guide me what to do I will be grateful., Hello everyone,, I’m responding to this topic because i’m experiencing the same issue. Roary runs, but output is empty (0 lines for “Summary statistics” and “Gene Presence Absence” tabular files and 0 bytes for the “Core Gene Alignment”). It worked fine when I tested few genomes, but the problem comes when I use more (552 in my case).
+I got same results with different “minimum percentage identity for blastp” (90, 85, 65, 60 or 50%)., Anyone has a solution?
+Thanks in advance., Up: the problem I reported is only for usegalaxy.eu. It worked with useglaxy.org. Still no idea why., Hi @Cosmo,
+thanks for the report; we are investigating the cause of the problem. Could you share a Galaxy history with me in order to reproduce it?, Regards]"
+15,3532,"
+workflow for shotgun sequences analysis
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Is there a WORKFLOW for analyzing SHOTGUN sequences?, Hi @Michal_Liddor_Naim,
+which biological question do you want to address?, Regards]"
+16,3543,"
+Nanoplot Tool crashing on private Cloud Galaxy server
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello !
+I have installed Galaxy on a private cloud server (following this tutorial : Galaxy Installation with Ansible) on ubuntu 20.04. I want to run a specific tool (Nanoplot) on Nanopore data (fastq format) but when I try, I get an error :
+""If you read this then NanoPlot has crashed 
+Please try updating NanoPlot and see if that helps…, If not, please report this issue at Issues · wdecoster/NanoPlot · GitHub
+If you could include the log file that would be really helpful.
+Thanks!"", I installed Nanoplot at the last version using the toolshed (1.28.2+galaxy1)., Here is the dataset error report :
+Dataset Error Report, An error occurred while running the tool toolshed.g2.bx.psu.edu/repos/iuc/nanoplot/nanoplot/1.28.2+galaxy1.
+Details, Execution resulted in the following messages:, Fatal error: Exit code 1 (), Tool generated the following standard error:, Matplotlib created a temporary config/cache directory at /srv/galaxy/var/tmp/matplotlib-ymr9i8qo because the default path (/srv/galaxy/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Traceback (most recent call last):
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/bin/NanoPlot”, line 10, in 
+sys.exit(main())
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/nanoplot/NanoPlot.py”, line 95, in main
+plots = make_plots(datadf, settings)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/nanoplot/NanoPlot.py”, line 152, in make_plots
+nanoplotter.scatter(
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/nanoplotter/nanoplotter_main.py”, line 159, in scatter
+plot = sns.jointplot(
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/_decorators.py”, line 46, in inner_f
+return f(**kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/axisgrid.py”, line 2244, in jointplot
+grid.plot_joint(scatterplot, **joint_kws)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/axisgrid.py”, line 1806, in plot_joint
+func(x=self.x, y=self.y, **kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/_decorators.py”, line 46, in inner_f
+return f(**kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/relational.py”, line 827, in scatterplot
+p.plot(ax, kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/relational.py”, line 608, in plot
+scout = ax.scatter(scout_x, scout_y, **kws)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/matplotlib/init.py”, line 1412, in inner
+return func(ax, *map(sanitize_sequence, args), **kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/matplotlib/axes/_axes.py”, line 4461, in scatter
+collection.update(kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/matplotlib/artist.py”, line 1064, in update
+raise AttributeError(f""{type(self).name!r} object ""
+AttributeError: ‘PathCollection’ object has no property ‘stat_func’, Galaxy job runner generated the following standard error:, Matplotlib created a temporary config/cache directory at /srv/galaxy/var/tmp/matplotlib-ymr9i8qo because the default path (/srv/galaxy/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Traceback (most recent call last):
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/bin/NanoPlot”, line 10, in 
+sys.exit(main())
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/nanoplot/NanoPlot.py”, line 95, in main
+plots = make_plots(datadf, settings)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/nanoplot/NanoPlot.py”, line 152, in make_plots
+nanoplotter.scatter(
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/nanoplotter/nanoplotter_main.py”, line 159, in scatter
+plot = sns.jointplot(
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/_decorators.py”, line 46, in inner_f
+return f(**kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/axisgrid.py”, line 2244, in jointplot
+grid.plot_joint(scatterplot, **joint_kws)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/axisgrid.py”, line 1806, in plot_joint
+func(x=self.x, y=self.y, **kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/_decorators.py”, line 46, in inner_f
+return f(**kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/relational.py”, line 827, in scatterplot
+p.plot(ax, kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/seaborn/relational.py”, line 608, in plot
+scout = ax.scatter(scout_x, scout_y, **kws)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/matplotlib/init.py”, line 1412, in inner
+return func(ax, *map(sanitize_sequence, args), **kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/matplotlib/axes/_axes.py”, line 4461, in scatter
+collection.update(kwargs)
+File “/srv/galaxy/var/dependencies/_conda/envs/__nanoplot@1.28.2/lib/python3.9/site-packages/matplotlib/artist.py”, line 1064, in update
+raise AttributeError(f""{type(self).name!r} object ""
+AttributeError: ‘PathCollection’ object has no property ‘stat_func’, Here some info that are in my group_vars/galaxyservers.yml :, galaxy_create_user: true
+galaxy_separate_privileges: true
+galaxy_manage_paths: true
+galaxy_layout: root-dir
+galaxy_root: /srv/galaxy
+galaxy_user: {name: galaxy, shell: /bin/bash}
+galaxy_commit_id: release_22.01
+galaxy_force_checkout: true
+miniconda_prefix: “{{ galaxy_tool_dependency_dir }}/_conda”
+miniconda_version: py39_4.12.0
+miniconda_manage_dependencies: true, Hi @Enzo_C,
+the problem seems to be related to this issue 1. Nanoplot updates should fix it; I’ll try to make it available the next week (there is a PR already opened)., Regards]"
+17,2999,"
+How to ‘force=TRUE’ in Human Methylation BeadChip module
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello everybody,, I am very new to Galaxy and hope for help with a - most likely - very trivial problem. I am trying to run the Infinium Human Methylation BeadChip module according to the respective Tutorial but using my own data. Unfortunately, I now encountered the error:, “(…)
+Error in read.metharray(list.files(pattern = “_Red.idat”)) :
+[read.metharray] Trying to parse IDAT files with different array size but seemingly all of the same type.
+You can force this by ‘force=TRUE’, see the man page ?read.metharray
+Execution halted”, According to what I found in the Bioconductor forum, this seems to happen quite regularly with EPIC data and it should be okay to try the ‘force=TRUE’. But, unfortunately, I do not know how to adjust this setting using Galaxy., Any advice would be very welcome!, Many thanks in advance and best wishes,
+Lea, Hi @ljflitsch,
+I opened a PR 2 in order to include this option in the Galaxy wrapper., Regards, Hey,
+@gallardoalba: Thank you very much for your help and effort. Since I am really new to this topic: Is there any way to get notified once this option becomes actually usable in Galaxy as an ‘end user’? E.g. anything/anywhere I can ‘follow’ to receive updates on this matter (perhaps via registering at GitHub)? Sorry for any inconveniences and best regards!, Yes, if you leave a comment in the PR, it will notify the news related to it., Regards, Will do so. Thank you very much., Are there perhaps any news on this topic? It has been a while since this help request and the corresponding PR has been initiated. Unfortunately though, I’m still encountering the same error message I’ve also had back then. Thus, I am now wondering whether the error might originally have had a different source or whether the ‘force=TRUE’ option was not yet included in the Galaxy wrapper (at least I could not spot a new setting bar for this). Many thanks!, Hi @ljflitsch,
+sorry, I didn’t get any response from the tool developers; I tried again to ask them to review the Pull Request. If in the next few days there’re no news, I’ll try to find a different solution., Regards]"
+18,3550,"
+Visualization of box plot(jqPlot) problem
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi Galaxy team!, I started training on Label-free data analysis using MaxQuant.
+I have a problem with “Visualize this data” on the cut tool result.
+When I selected box plot(jqPlot) it did not visualize data.
+Instead a message “Please confirm the settings before rendering the results” appeared., With best regards,, Arman, Hi @Arman_Kulyyassov,
+thank you for your report; I contacted the person in charge of this training in order to check the problem., Regards, Hi Arman,
+the Galaxy interface has changed a bit. When you see the message “Please confirm the settings before rendering the results” you should see two small arrows on the upper right corner of the screen. Once you click on them the menu appears which allows you to set the specified parameters., Best,
+Melanie, Dear Melanie,, thank you very much for your letter and helpful advice. I followed instructions but instead of a visualization plot I get this:
+, ]"
+19,600,"
+How to interpret bedcov tools output?
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello. I would like to ask there I can find some information how to interpret BedCov tool output, because there is just numbers in the first line (header) and I can’t understand which column shows me sequence coverage? The second question is how I can visualize the coverage using Galaxy? Is there any tool which might help to do that?, Hi, did you find out what the bedcov output meant?, Hi @amyhouseman,
+bedcov reports the total number of reads in the specific interval (sum of per-base read depths per BED region, discussed here). What is your goal? If you are interested in computing the average coverage of specific intervals, I suggest you to use bedtools Genome Coverage., Regards, Hi! Thank you for your reply., I wanted to work out the average read depth at each position using the bam file against the capture exome bed file - I did this using the average of the samtools depth output., Then I want to see how much coverage and % mapping has been achieved over the capture exome bed file - for this I have just been using samtools flagstat (samtools view -bu -L capture.bed in.bam |samtools flagstat)., I think the output of this gives me what I need for the % mapped to the bed?:, 91223463 + 0 in total (QC-passed reads + QC-failed reads)
+0 + 0 secondary
+11162 + 0 supplementary
+0 + 0 duplicates
+91220169 + 0 mapped (100.00% : N/A)
+91212301 + 0 paired in sequencing
+45644366 + 0 read1
+45567935 + 0 read2
+90959524 + 0 properly paired (99.72% : N/A)
+91204491 + 0 with itself and mate mapped
+4516 + 0 singletons (0.00% : N/A)
+154458 + 0 with mate mapped to a different chr
+143066 + 0 with mate mapped to a different chr (mapQ>=5), I have ran bedcov but I don’t know if its output is relevant for the coverage mapping percentage. I did try and use bedtools genome coverage but couldn’t work out how to use my bed file as the comparison - if that makes sense!, Thanks,
+Amy, Indeed bedcov is not relevant at all in that case; regarding bedtools genome coverage, you could use bedtools Intersect intervals in order to get the reads that overlap with the exome capture bed file, and then using it as input for the bedtools genome coverage tool., Regards]"
+20,3551,"
+De Novo Assembly from Nanopore Reads
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello,
+I am trying to perfrom a de novo assembly from nanopore reads. All the reads are stored in a fasta file. I tried to run the flye assembler on the dataset, but 3 hours later, It returns with an error.
+toolshed.g2.bx.psu.edu/repos/bgruening/flye/flye/2.9+galaxy0 .
+Does anyone know what this error means, and point me in the direction to fix it.
+I can provide more information if needed.
+Thanks, Hi @Bolivian_Ram,
+could you share your Galaxy history with me? I’ll have a look. You can share it with me by using my email address ., Regards]"
+21,1915,"
+Error message when loading RNAStar
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi Galaxy Team!, We try to use RNAStar for analyzing our paired-end sequencing data. After building a list of dataset pairs, the platform returns the following message to us when we try to load RNAStar:, Loading tool toolshed.g2.bx.psu.edu/repos/iuc/rgrnastar/rna_star/2.7.8a+galaxy0 failed: Bad Gateway (502), This does not happen when we try to load the tool in the original list of unpaired .fastq files. Can you provide any help to solve this problem?, Best regards,
+Max, Hi @Max,
+this problem seems to be related to the storage issue. We hope it will be fixed this week. Sorry for the inconvenience., Regards]"
+22,2008,"
+Alphafold2 Error Message - Could not find HHsearch database /data/pdb70/pdb70
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, I was running a collection of FASTA files on ALphafold2. Each FASTA file contains a single line of FASTA header and a single line of amino acid sequence. The run failed and the error message generated was “Could not find HHsearch database /data/pdb70/pdb70”., , , What should I do now so that I can run the structure prediction?]"
+23,2934,"
+Filter BAM dataset on spliced alignments
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, I’m trying to filter reads with skipped regions/spliced alignments which have N bases in the cigar string. I’m using the following tool: Filter BAM datasets on a variety of attributes (Galaxy Version 2.5.1+galaxy0). I selected the option to filter on cigar string but do not know how to give a command to filter only reads with the ‘N’ base. Does anyone know how to do this?]"
+24,1099,"
+MACS2 gives no error but I am getting zero peaks as well…problem or not a problem?
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Dear support team at GALAXY,, I have recently performed a ChIP-seq experiment consisting of:
+2x WT (neg. ctrls: a strain that has no GFP tagged proteins but was subjected to the IP with the anti-GFP)
+2x TF1-GFP (IP with the anti-GFP)
+2x TF2-GFP (IP with the anti-GFP)
+3x TF3-GFP(IP with the anti-GFP), Some necessary details:
+-The ChIP was performed simultaneously with all 9x samples
+-All TFs were previously checked in the confocal, in the same dev. stage that I later performed the fixation of my ChIP, and they showed clear nuclear signals.
+-The background of all TF strains is the same Wt that I have used as neg. Ctrl, After the seq, I got 2x files with reads for each sample. Thus, I had to uncompress and then combine them with the “Concatenate datasets” tool and then proceed to the mapping with Bowtie2. I did the same of course with all 3x TFs and I got for all very good % of uniquely mapped reads avg. 85% out of ca. 50 mio reads/sample., I have then tried to identify statistically significant peaks for TFs with MACS2. The analysis of TF1 and TF2 did work great. With the analysis of TF3 I have a problem, or at least I cannot rule out at the current stage, if I have a rather technical problem with my analysis, that I should solve, or if simply the TF3 at the point of sampling has no binding to DNA whatsoever however is nuclear-localized., When I am running MACS2 for peak identification of TF3 I am getting the message in the Image_1 (see attachments).
+, , Please note that I am getting the same message no matter which combinations of Wt and TF3 samples I choose. I am getting the same output even when I am playing with different settings of the MACS2 (e.g make a model or make no model etc). What is weird to me is the fact that I get -0- peaks from any combination of samples; although, the tool gives from the other hand no error. Please see how the corresponding mappings look like in IGB in the Image_2 (see attachments)., , , The above is already a very not normal appearance of all 3x TF3s., On the other hand, when I am using the same 2x Wt for the analysis of the TF1 & 2, where I got stat. sign. Peaks. Please see in the Image_3 (see attachments) how this mapping looks, , , This looks very normal, from my experience., I am also thinking that If we would assume that the TF3 had no real binding positions then I should be getting, more less the same appearance of the distribution of the peaks over the chromosome as the Wts; but this is not the case. From the other side, all 3x biol. repl. of the TF3 look the same. The same ab did work nicely for the other two TFs. And the pipeline of my analysis with GALAXY works also nicely for the other 2x TFs. My personal feeling is that I do (or do not) something during the analysis of the TF3, thus I do get no peaks… Bottom line is that I would like to know, if I have a technical issue with my analysis or if simply the TF3 does not bind anywhere at this dev. stage., Could you please help me?, I would highly appreciate any help?
+Greetings,, Manolis, Hi @Manolis1,
+would you mind sharing your history with me? I’ll have a look at it., Regards, Hi,, I have just did., Thx,, Manolis, Hi I have a similar problem. When I am adding a control Bam file to my sequence I am getting 0 narrow peaks and 0 bed. When I do not have a control I am getting the results. Could you please help me?]"
+25,3540,"
+HTTP ERROR 500 Downloading Big bam files
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, https://usegalaxy.org/datasets/bbd44e69cb8906b58a9b381788cc0452/display?to_ext=bam, Hi,
+I tried to download a big size bam files (>10GB) and it was not downloading. The following error showed :, usegalaxy.org is currently unable to handle this request., HTTP ERROR 500, May I know what could be the issue for this problem? It worked when I tried to download small files (<5GB). Thanks., Hi Muazr-, I’m having trouble uploading local files onto the galaxy platform ( Warning: Error: tus: unexpected response while creating upload, originated from request (method: POST, url: /api/upload/resumable_upload/, response code: 502, response text)., It also says that "" Galaxy could not be reached"" which has been an intermittent error for 2 days now., Could you try and upload a small file from your local system and test whether the upload function is not working for you either?, Thanks!, Hi egrow,
+I have no problem uploading file from the local system. However, I encountered the same error uploading large file (>10GB), but not with all large files. It seems like there is a timeout or something that cause the upload to fail. I noticed that if the upload time was taking very long, it would most probably fail. I’m not sure if that is the case. It was only based on my observation.]"
+26,3419,"
+welcome.html breaks when galaxy is behind physical proxy
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, I have an Enterprise Firewall in front of my galaxy server which is proxying and handling https termination. Everything seems to work fine in galaxy but welcome.html does not get rendered?, When I access it directly, from inside the lan the welcome bits show fine just now when accessed via the proxy., Wondering if anyone else has a situation like this?, Thanks,
+Morgan]"
+27,3536,"
+usegalaxy.org IGV connection issue
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Keep running into error with trying view bowtie or MACS2 on local IGV from usegalaxy.org., Either get a message “Connection refused: connect” "" OR “'ocalhost refused to connect.”, OR that it can’t find the index file when IGV is trying to load, though the link is correct., Issue happens intermittently and from different computers and browser types. Never had this issue before., Thank you, Hi Dgalaxy-, Was unable to load new files onto the galaxy server (data fetch errors) on 5/30/22 1PM-4PM CST. This issue seems to be fixed all of a sudden at 4:26PM on 5/30/22., Could you check again and test if your issue is resolved?, Thanks!, Whoops, now we are back to not being able to upload data directly using the upload data tool (as of 6PM CST 5/30/22):, Error message:
+Warning: Error: tus: unexpected response while creating upload, originated from request (method: POST, url: /api/upload/resumable_upload/, response code: 502, response text:, Galaxy, Strange. Yeah I have not had as many issues earlier today but bummer if issue is back again., I of course have a presentation tomorrow., I can keep you posted. Hope it spontaneously resolves as earlier!!, Hope it spontaneously resolves as earlier!!, Hi, I am also facing the same issue. It is pretty annoying. Kindly take time and provide a solution.]"
+28,2539,"
+HiSat reference genomce seq.fasta GRCh38 does not work and HiSat2 does not accept other ref.seq.fasta
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, failure running job
+An error occurred with this dataset, how to solve this issue. no error explanations or codes so we can troubleshoot.
+İdeally I would like to use soft masked GRCh38 (from history/ uploaded)
+could you please help, thanks.]"
+29,3527,"
+Cant reach usegalaxy.eu
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Today I can’t even reach the site and the service has not worked properly for me since May 17th. Any clues as to why that is?, Hi @Biljana,
+There is a performance issue with our main storage and this is affecting the reliability of the Galaxy service. We are investigating the source of the problem.]"
+30,2803,"
+“Unable to finish job” even if the output files are well generated
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi, I have a very confusing problem with some of the galaxy outputs. I run the same tool with different samples, and for two of the ten samples, galaxy displays red boxes, with the message “Unable to finish the job” as you can see in the image below.
+Surprisingly, the output files are well produced. There are no errors in the tool_stderr file either.
+And when I run the tool from the command line, the tool runs fine…, How can I figure out what is wrong ? Have you ever had this problem?, Thank’s for your help, , , Hello @vindarbo, If you were working at UseGalaxy.org, there was a server-side issue that impacted some jobs over the last 24 hours. Please try a rerun again now., What you posted in the screenshots are not the full stderr or stdout logs. These FAQs explain where to find those:, If the problem was related to the UseGalaxy.org server problem, many of the jobs failed with a message like this but some may have ended in other odd ways., (33, “HTTP server doesn’t seem to support byte ranges. Cannot resume.”), Try a rerun now as the issue has been corrected. You may also want to check upstream jobs – green datasets mean that the job didn’t technically fail, but it could still be empty or truncated for some cases., Let’s start there. If you need more help, please include a few more details. Items to include: confirm the server URL and the full stdout and stderr. A shared history link is also helpful., Hi,, Thank you for your reply., I found the problem. In fact, this is because Galaxy expected a tabular output file, when in fact the file was separated by spaces. Thus, the first line with many spaces was too big and exceeded the size limit.
+it occured with only few samples]"
+31,3187,"
+DeSeq2 Fatal Error - US.UTF-8 cannot be honored
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Dear everyone,, I tried to analyze RNA-seq data successfully. Unfortunately, after running the DeSEQ2 tool I get the following error:, Warning message:
+In Sys.setlocale(“LC_MESSAGES”, “en_US.UTF-8”) :
+OS reports request to set locale to “en_US.UTF-8” cannot be honored
+estimating size factors
+estimating dispersions
+gene-wise dispersion estimates: 6 workers
+mean-dispersion relationship
+final dispersion estimates, MLE betas: 6 workers
+Error in (function (cond)  :
+error in evaluating the argument ‘args’ in selecting a method for function ‘do.call’: BiocParallel errors
+3 remote errors, element index: 1, 2, 3
+0 unevaluated and other errors
+first remote error: error in evaluating the argument ‘x’ in selecting a method for function ‘t’: no right-hand side in ‘b’
+Calls: DESeq → DESeqParallel → do.call → bplapply → bplapply, At the same I can use edgeR and Lima without any problem.
+I just wanted to compare the three different tool’s results!!, Does anybody know about it?, Ini, Hello I have the same message could you solve it?]"
+32,2797,"
+multiqc for htseq output
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi,
+Is it posible to do a Multiqc after htseq? However as the htseq output does not give information about the percentage of aligned reads (shows ony the number of no_features, ambiguous, too low aQual ,not aligned and not unique alignment) how is it possible? I have done Multiqc using featureCounts, but not what the input should be when i use the htseq data, Thanks,G, , Hi @GGOPA
+yes, MultiQC can visualize summary files from htseq-count. % of alignments can be calculated from numbers in summary files. Note that htseq-count summaries describe alignments, not reads, eg a read mapped to two  locations has two alignments.
+Hope this answers the question.
+Kind regards,
+Igor, Thanks, Igor., I get 2 output files for htseq.  One that shows the counts (Gene ID and number of aligned reads) and another that says (no feature) with details of ‘ambiguous, low_aQual, non-aligned and not-unique aligned’ as shown in my previous post. I do not see a file called ‘Summary’ as the one that is generated by featureCounts. And Multiqc could not be executed by with these two files.
+Many thanks,
+GG, Hi @GGOPA
+I am sorry for clumsy explanation. Summary file is one with (no feature) at the end. It contain summary for alignment counting. During setup of MultiQC job select HTSeq for Which tool was used generate logs?. Select only summary files with (no feature). Do not use count files.
+Hope it helps.
+Kind regards,
+Igor]"
+33,2698,"
+Trim Galore! can’t find fastq files
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Dear all,, i have cutadapt raw output files and want to run cutadapt to trim nextera transposase sequences. Trim galore can’t find any files neither my original fastq.gz files. Could you please help me?, Thanks in advance,, Best
+Bernhard, Hi @Bernhard,
+most likely your files have ‘fastq.gz’ datatype in Galaxy, eg format: fastq.gz. Cutadapt recognizes this datatype, while Trim Galore works with datatype like fastqsanger.gz. Similar topic discussed on the forum, eg Unicycler failed - ""reads unavailable"" -- Inputs not recognized due to an incompatible datatype assignment - #3 by vanina.guernier, Kind regards,
+Igor]"
+34,2797,"
+HTSEQ and hisat2 settings for stranded library
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi,
+I have paired-end stranded libraries.Can someone please let me know what should I choose for these 3 options to run HISAT2 and htseq thereafter, given that my inferexperiment result is1±,1-+,2++,2–, Q1. For HISAT2, it aks to specify strand information (Unstranded/FR/RF) and then, Q2. also asks to choose*‘Select the upstream/downstream mate orientations for a valid paired-end alignment against the forward reference strand*’ with options (–fr/–rf/–ff)., Q3. for htseq it asks to choose setting for ‘stranded’ with options (yes/no/reverse)., I used FR and --fr for HISAT2 and obtained 43% overall mapping. Then I used those BAM files to perfomr htseq and selected YES for the ‘stranded’ option. After doing MultiQC, I see 0% reads were assigned., Many thanks,G, Hi @GGOPA
+read strandness is determined by protocol used for preparation of library. Ideally, your sequencing service provider should give it to you as part of description for sequencing data. HiSAT2 and htseq-count settings are determined by the data. If you don’t have information on strandness of your reads, either ask your sequencing provider or determine it as described in Strandness section of this tutorial: 1: RNA-Seq reads to counts
+Good description of strandness is available in another tutorial: De novo transcriptome reconstruction with RNA-Seq
+Kind regards,
+Igor, Thank you, Igor.
+Cheers,
+GG]"
+35,3215,"
+Rat genome for goseq?
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello,, I am trying to run goseq on rat RNA-seq data to analyze differentially expressed genes. I noticed that goseq on galaxy doesn’t have the rat genome on it. Is it possible to get the rat genome on goseq on galaxy or be able to upload the information myself? I’m using the Rnor 6.0 build of the rat genome., Thanks., Hi, unfortunately I cannot help you but I have the same problem with the cow genome (bostatu9). Did you manage to solve it somehow?]"
+36,2698,"
+Trim Galore! can’t recognize FASTQ files
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Dear all,, Trim Galore! can’t actually recognize any fastq files or Cutadapt output files for Nextera Transposase trimming. Do you have any solutions?, Thanks in advance,
+Best
+Bernhard]"
+37,1561,"
+Missing gene names in DropletUtils/ RaceID output
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello- I have gone from RNA STARSolo through DropletsUtil and RaceID with a single cell 10X dataset, based on these tutorials:, Training material for all kinds of transcriptomics analysis., Training material for all kinds of transcriptomics analysis., I seem to have missed a step where the genes should be labelled though as the heat maps etc from RaceID all have ‘ENSG’ numbers rather than gene names. Is this at the DropletUtil step? Could you please advise?, Hi Carolyn,
+Yes, most likely you lost the gene symbols in DropletUtils. The gene information file (RNA STARSolo on bla bla: Genes raw) produced by STARSolo contains gene id in the 1st column and gene symbol in the 2nd column. So the DopletUtils takes the gene ids instead of gene symbols to construct its output matrix. You can cut c2 from “RNA STARSolo on bla bla: Genes raw” file and then use it for DropletUtils. But the problem is that the gene symbols are not always unique. We have to make them unique before inputting to DropletUtils. It is possible to make the names unique using some AWK program. But it can also be solved using anndata tools. A possible solution is the following:, Yes, most likely you lost the gene symbols in DropletUtils., Hmm, pretty interesting. Anyway, thanks @pavanvidem for providing the solution.]"
+38,3524,"
+RSEM prepare reference tool does not produce valid reference files
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello, I’m doing some differential expression analysis on RNA-Seq data. All steps have been previously (successfully) run in command line and now I’m trying to create a workflow on Galaxy for the same procedure., I got stuck on using the RSEM tool. When I try to run RSEM prepare reference, it does not produce the “red error”, but it does not produce a valid RSEM reference file either. When I try to use the created reference file in the next step, the RSEM calculate expression, the tool does not recognise any valid reference files in my history. I downloaded and inspected the file and it contains only the name of the file in it and nothing else., When using RSEM prepare reference, I have tried creating the reference in 3 different ways, using the:, When I do it independently of Galaxy in command line with the same data, it all works fine so it doesn’t seem like the problem lies in the data. Can someone please tell me if I’m doing something wrong or there’s a bug in the tool?, Thank you!]"
+39,1654,"
+log2 RSEM data with finite and non-negative
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello All, I am analyzing 1 RNAseq data which has been deposited in GEO as the RSEM upper quantile normalized data. I used limma-voom for DEGs between groups using galaxy. The error which I have got  was:
+[1] “Extracting counts”
+Error in cpm.default(data$counts) :
+library sizes should be finite and non-negative
+Calls: cpm -> cpm.default
+Execution halted, Can anyone suggest me how to handle this data?, Thanks in advance, Anyone solve this problem yet? I have been confused with it too.
+PS.it can well run on another coworker’s computer.]"
+40,2797,"
+Mapping _ unmapped reads
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi,
+For the RNA-Seq analysis( paired-end stranded libraries for cell cultures infected with virus) of one of my samples (triplicate)I see only around 40% over mapping (HISAT2) to host genome. I tried using RNASTAR and the resut was similar. I wanted to know if all the unmapped reads belong to the viral genes, if it is not from the host.Therefore, I chose the option to write the unaligned reads separately while re-running HISAT2. I got 2 files’HISAT2 on data:unalined reads (L)’  and ‘HISAT2 on data:unlined reads (R)’., Q1. What is L and R here? Do they denote pairs, as my library was paired-ends? If so, which one should I choose as my Forward read and Reverse read when I do the mapping?, Q2. Can you please suggest an appropriate method to see what proportion of these unmapped reads belonged to the virus?, Many thanks,G]"
+41,2797,"
+filter and map unmapped reads
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi,
+For the RNA-Seq analysis( paired-end stranded libraries for cell cultures infected with virus) of one of my samples (triplicate)I see only around 40% over mapping (HISAT2) to host genome. I tried using RNASTAR and the resut was similar., I wanted to know if all the unmapped reads belong to the viral genes, if it is not from the host.Therefore, I chose the option to write the unaligned reads separately while re-running HISAT2. I got 2 files’HISAT2 on data:unalined reads (L)’  and ‘HISAT2 on data:unlined reads (R)’., Q1. What is L and R here? Do they denote pairs, as my library was paired-ends? If so, which one should I choose as my Forward read and Reverse read when I do the mapping?, Q2. Can you please suggest an appropriate method to see what proportion of these unmapped reads belonged to the virus?, Many thanks,G]"
+42,2797,"
+HISAT2-htseq SETTINGS_paired-end stranded library
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi,
+I have paired-end stranded libraries.Can someone please let me know what should I choose for these 3 options to run HISAT2 and htseq thereafter, given that my inferexperiment result is1±,1-+,2++,2–, Q1. For HISAT2, it aks to specify strand information (Unstranded/FR/RF) and then, Q2. also asks to choose*‘Select the upstream/downstream mate orientations for a valid paired-end alignment against the forward reference strand*’ with options (–fr/–rf/–ff)., Q3. for htseq it asks to choose setting for ‘stranded’ with options (yes/no/reverse)., I used FR and --fr for HISAT2 and obtained 43% overall mapping. Then I used those BAM files to perfomr htseq and selected YES for the ‘stranded’ option. After doing MultiQC, I see 0% reads were assigned., Many thanks,G]"
+43,3212,"
+diffbind update
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello all,, I was wondering if there are any plans to update diffbind on galaxy.org? The current version is 3.6.1 but galaxy is currently running 2.10.0, Thanks, Hi @stealsh, The version at the top of the tool form in Galaxy is the wrapper around the 3rd party tool. If you run a tool in Galaxy, the version of the different components (requirements) actually used for the job are included in the Job Logs 1. Those requirements are also included in the Toolshed., For this tool, most seems to be current between the Diffbind Bioconductor version and the Galaxy version in the ToolShed, and as hosted for use at the public servers UseGalaxy.org, UseGalaxy.eu, and UseGalaxy.org.au., Bioconductor: “Bioconductor version: Release (3.15)”, Galaxy ToolShed: Galaxy | Tool Shed, Requirements:, You mentioned version “3.6.1” – and that is Bioconductor version for their package when installed locally. Galaxy uses portions of that in the wrapper, and incorporates other parts directly., The current version is 3.6.1 but galaxy is currently running 2.10.0, Is there a specific sub-function when using Diffbind that you are looking for? It may not have been included in the current Galaxy wrapper that you see represented on the tool page. Or, maybe we can help you to find it , Hi @jennaj,, Thanks for the detailed reply. I appreciate all the hard work you all do to make galaxy such a great resource!, There seems to be many functions in diffbind (as per the vignette) that are not available in galaxy., For example, it is possible to output Venn diagrams in diffbind to show overlap, and lack of, between samples; this is not present in galaxy. Also, profile plots are not available in galaxy. Further, different normalisation methods are available in diffbind, such as sequencing depth or spike-in DNA. These aren’t available in galaxy, but I would like to be able to use both methods, though I assume sequencing depth is default in galaxy., Also, this may be a separate question that I need to start a new thread for, but is it possible to download the data from biffbind separated out into different groups? What I mean by this is that I have data from two transcriptions factors, TF1 & TF2. Both bind at the same sites throughout the genome, but diffbind shows that in some loci only TF1 binds and in other loci only TF2 binds. What I’d like to do is download the coordinates for where TF1 only binds, where TF2 only binds, and where TF1&TF2 bind together as separate groups so I can do motif analysis. Is this possible with diffbind or do I need to find another way?, Regards,
+Steve, Hi @stealsh, Scroll down in the tool form and expand the section “Output Options”. I think that most of of the extra outputs you are looking for are included., Plus you can output a copy of all the Rdata tables and the Rscript used during the processing in Galaxy if you want to parse the results in custom ways, or using methods in the Bioconductor vignette directly., Meaning, the Rscript and Rdata tables can be used with R directly inside of Galaxy (inside interactive environments), or downloaded to use wherever you prefer to use R. Find Galaxy Interactive Environments (GIEs) in the tool panel under the section Interactive Environments. The UseGalaxy.eu server hosts the largest variety of GIEs., One example is Rstudio and the GTN has tutorials that cover basics (moving data from a history into an environment, then back out into a history), others are used in scientific tutorials, and some cover coding languages themselves., The basic get data in/out methods are mostly the same between the different GIEs – the tool form that launches the environment will have the function details. And some of the GIEs combine multiple programming environments (R, python, bash). The Interactive Jupyter Notebook one example, and also has a GTN tutorial., GTN Tutorials can be searched with keywords or navigated directly., Example GTN searches:, “rstudio”  == Search Tutorials
+“interactive-tools” == Search Tutorials
+“jupyter” == Search Tutorials, Example topic navigation:, These are coding topics that could be applied when using IEs in Galaxy, or other places. R is included. News post explaining the goals: New Topic: Data Science Survival Kit 1, https://training.galaxyproject.org/ >> “Data Science Survival Kit” >> Galaxy Training!, Small warning: GIEs do not automatically track or save work into a Galaxy history the same as regular tools. That means you need to specifically track the tools or functions or datasets within the environment. If you quit out of the session, the content is lost. If the server has a hiccup, the content is lost. So be sure to save your important analysis artifacts back into the history – periodically while working then once done. That can include the entire environment plus scripts and files (all will show up as “datasets” in the history)., GIEs can be left active themselves and relaunched for short time periods (find any still active in your account under User > Active InteractiveTools, but none are quite perfect. You might need to kill a prior GIE to start a new one: do this by purging the history dataset that represents it. And, definitely save back anything you would miss to the history the environment was launched from. I know I said “save” twice already … but learning the hard way isn’t so fun  and everyone is very used to Galaxy automatically capturing and saving all work by default. GIEs are different., Hope that helps more! If you find a specific function that you can’t do – or that seems to be something so commonly included that it would be helpful to add more options into the tool form GUI directly, please write back and we can make a request to the developers. They can determine what is possible or practical., Hi @jennaj,
+Thanks for the detailed reply., I’ll look into using R to help me unlock some of these other functions/outputs., Regards,
+Steve]"
+44,3520,"
+DESeq2 alternative hypotheses
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi all,, DESeq2 offers a bunch of alternative hypotheses (“greaterAbs”, “lessAbs”, “greater”, “less”). How can I specify them in the Galaxy DESeq2 tool?, 
+, Thank you for any help!]"
+45,3488,"
+exome sequencing GEMINI load error
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, I am currently doing my project work on Exome sequencing and is using the following tutorial (Exome sequencing data analysis for diagnosing a genetic disease). I have an error in GEMINI load tool. It is showing that the VCF format is unavailable(SNPEff eff). Please look into the problem and help me with it. Thank you
+, , Hi @Thara_Dharanidhar
+not quite sure what we are seeing in those screenshots.
+Apparently, you’ve run the tool already and have produced a gemini.sqlite dataset with it?
+Anyway, the reason why the Vcf dataset is not offered in the select box is likely that you haven’t set a format/dbkey on it. Click on the pencil icon on your dataset and set the dbkey to hg19., Hi @wm75
+I did exactly what you told but i am not getting the output. I set the dbkey as hg19 but no result.Can u suggest alternative tool instead of GEMINI load.
+, , I’m sorry, but I don’t understand what the issue is. You have obtained a GEMINI load dataset and its state is green. Everything looks good and you can just continue with the tutorial, can’t you?, Hi@wm75
+GEMINI load tool is working and its state is also green but I am unable to view the output as some file is getting downloaded every time I click the view option. What kind of data will be obtained from GEMINI load tool as you can see my screenshot showing that (loading chunk 1 , loading chunk 2…) So the data will look like this or in some other format. Please help me out.
+, , This file is getting downloaded whenever I click the view data . When I click the file this message appears “file cannot be viewed”.
+, , Yes, the GEMINI load tool produces a GEMINI database, which is not intended to be viewed, but queried. Please follow the tutorial, which explains a few ways how you can do that.
+These tutorials: Identification of somatic and germline variants from tumor and normal sample pairs 1 and Calling variants in diploid systems demonstrate more options.
+Think of the GEMINI database as a computer-friendly version of a VCF. You can’t read it, but queries are very efficient. The GEMINI load tool is essentially the converter that takes VCF and produces the database format., Hi@wm75
+Thank you so much for your help.]"
+46,3519,"
+Trying to Create Transcriptomes as FASTA (current workflow HISAT2-Samtools-Cufflinks)
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello,
+I am trying to generate fasta files of the transcriptome of a species with RNAseq data I have currently for use in ExUTR. I have run HISAT2 with the specific option for Cufflinks downstream analysis and then sorted and indexed BAM files with Samtools. However, my code (both outside of Galaxy and while attempting Galaxy) has stalled. I my sorted bam files but attempting to run them on cufflinks is generating this set of errors., I am looking for a way to resolve this., The options I ran are as follows:, |AM or BAM file of aligned RNA-Seq reads|* 1:Gbfemale-mated-bac2.sorted.bam|
+| — | — |
+|Max Intron Length|300000|
+|Min Isoform Fraction|0.1|
+|Pre MRNA Fraction|0.15|
+|Use Reference Annotation|Use reference annotation|
+|Reference Annotation|* 5: VectorBase-57_GbrevipalpisIAEA.gff|
+|Count hits compatible with reference RNAs only|No|
+|Perform Bias Correction|Yes|
+|Reference sequence data|cached|
+|Using reference genome|VectorBase-49_GbrevipalpisIAEA_Genome|
+|Use multi-read correct|No|
+|Apply length correction|Cufflinks Effective Length Correction|
+|Global model (for use in Trackster)|No dataset.|
+|Set advanced Cufflinks options|Yes|
+|Library prep used for input reads|Auto Detect|
+|Mask File||
+|Inner mean distance|45|
+|Inner distance standard deviation|20|
+|Max MLE iterations|5000|
+|Alpha value for the binomial test used during false positive spliced alignment filtration|0.001|
+|percent read overhang taken as suspiciously small|0.09|
+|Intronic overhang tolerance|8|
+|Maximum genomic length of a given bundle|3500000|
+|Maximum number of fragments per locus|1000000|
+|Minimal allowed intron size|50|
+|Minimum average coverage required to attempt 3prime trimming.|10|
+|The fraction of average coverage below which to trim the 3prime end of an assembled transcript.|0.1|, BAMs created in Galaxy are coordinate sorted and indexed. Tools, such as HiSAT2, are in fact pipelines and include samtool sort etc.
+Cufflinks tools are marked as deprecated on (some) Galaxy servers. Have a look at De novo transcriptome reconstruction with RNA-Seq]"
+47,3512,"
+FASTQ - FASTA changing output file name
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hi, I’m converting a number of sequences from FASTQ to FASTA, and previously the output has named files the same as the input, but now it’s calling them FASTQ to FASTA on data 20, so I don’t know which sample it is.
+How do I change this so it keeps my unique IDs?
+Thanks!, You can change file names manually: Edit Attributes (pencil icon) > Change name > click Save.
+You can create a collection of FASTQ files and convert fastq into fasta on collection. Collections keep the original names, but more complicated to work with
+You can create a small Galaxy workflow and rename output dataset using basename, so you can remove suffix corresponding to FASTQ file and add something like .fa. Search for a tutorial on Galaxy workflow for more information.
+You can add tags to FASTQ files. Tags will propagate through analysis.
+Hope this helps.
+Kind regards,
+Igor]"
+48,3517,"
+SRA- GALAXY read input
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello everyone I have a doubt, why do I have to input two FASTQ files from NCBI when I only have to align one read against the reference genome?, Which tool do you want to use to align? And do you already have a FASTQ file? Is it possible that your single fastq dataset is representing a paired-end run? If that is the case you can look at the tool named FASTQ splitter., Maybe this page can also help:, Collection of tutorials developed and maintained by the w..., , , Because it is just a tutorial and if you process all accessions it would take a while. It is explained on the page (under your first screenshot).
+Hope this answers your question.
+See selected in red:, , ]"
+49,3516,"
+Bam input file is not available for the training session ‘Calling variants in diploid systems’
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello.
+It seems the bam file ( GIAB-Ashkenazim-Trio-hg19.gz) in the training session ‘Calling variants in diploid systems’, Genetic differences (variants) between healthy and diseas..., 
+are not able to process for variants calling., I also used Samtools to convert this bam file to a sam file, and got the error:
+[W::bam_hdr_read] EOF marker is absent. The input is probably truncated, Also, the size of the bam file is extremely small, only 52kb, Hi @wcq848677, The BAM is downsampled so it will run quickly when running through the tutorial., This is a history that has that particular BAM loaded (size is 51.2 KB), and the content is as expected. I also converted Bam-to-Sam in that history, and that worked plus produced the right result. Galaxy | Accessible History | tutorial variants. When you run Freebayes, input the BAM, no need to convert to SAM. If you want to see the content of the BAM, it is small enough that Galaxy can produce the uncompressed “SAM” view (use the “eye” icon for the dataset)., Maybe you got a corrupted version? Try pasting just this link into the Upload tool in Galaxy. Leave all the other settings at default. https://zenodo.org/record/60520/files/GIAB-Ashkenazim-Trio-hg19.gz, You can also make a copy of that history to work with it. I’ll leave it shared for this week., Tutorial: Calling variants in diploid systems, Note: You marked this as being “galaxy-local” and as if working at UseGalaxy.org., Hope that helps!, Hi Jennifer, Thank you so much for your reply, you are right, it is running now after I pasted the link you provided to me.
+I guess the problem I encountered could be automatically decompressed for the .gz file when I downloaded it in my MacBook. Do you know the reason behind this., Anyway, appreciate your help! it is quite useful, Charley]"
+50,2906,"
+DEseq2 pairwise comparison
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Dear All,, I wanted to perform differential expression analysis between 7 different cell lines, however, I just noticed that just the results are based on differential expression between just the first two cell lines which were input as factors. Is there a way we can perform pairwise differential expression between all cell lines and then isolate the genes which are differentially expressed between all cell lines as we can do in limma?, I look forward to your suggestions and some help on this topic,, Best,
+S, Reply posted at Gitter: galaxyproject/Lobby - Gitter, Tutorials: Galaxy Training! 2, closed on May 23]"
+51,3498,"
+cuffdiff software output
+","[
+You have selected 0 posts.
+
+, 
+
+      select all
+    
+, 
+
+    cancel selecting
+  
+, Hello. I am using cuffdiff in the galaxy. Between my cuffdiff output, there are no isoforms differential expression file and I get 17 files in my output instead of 23. how can I get isoforms differential expression file?
+please guide me.
+thank you., Hi @Sevda.Hosseinzadeh, Updated transcriptomic analysis methods are strongly recommended, and many tools for transcriptomics analysis are covered in the Galaxy tutorials here: Galaxy Training!. You can also review the RNA-seq or RNA Analysis tool groups., If you get stuck with a non-deprecated tool, review this troubleshooting FAQ first, then ask questions here with the context from your troubleshooting and a shared history., Between my cuffdiff output, there are no isoforms differential expression file and I get 17 files in my output instead of 23, Cuffdiff and many other of the “Cuff” tools are deprecated on most public Galaxy servers. Check to see if this, or any of the tools that you may have used upstream, is marked deprecated where you are working. Deprecated tools may directly fail, or they might just produce odd results., Even if the “Cuff” tool is not marked as deprecated on a particular server, it may still produce odd results or have limited/modified results for technical reasons. These tools won’t be updated. That said, common problems that people used to run into usually involved the reference annotation. Upstream from that, the BAM sometimes had problems. Both were usually about missing attributes or format issues., This link points to a search of our prior forum with the keywords “biostars cuffdiff”. That may not fix the problem you are having (missing expected outputs), but if you really want to use the old tool, checking the usage/inputs for prior known issues is where to start., To do your own search, go to the  Pan-Galactic Google Search and add in the search term (names other “Cuff” tools used upstream? or the mapping tool?) along with the keyword “biostars” to limit the results. This forum doesn’t include that original discussion since it started being used a few years after those tools were deprecated., Thank you very much.]"
