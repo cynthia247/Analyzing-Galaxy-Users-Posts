@@ -31,7 +31,6 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-
 def scroll(driver, timeout):
     """
         Purpose:
@@ -61,8 +60,7 @@ def scroll(driver, timeout):
             break
         last_height = new_height
 
-
-
+        
 # New instance for Firefox driver
 driver = webdriver.Firefox()
 
@@ -84,7 +82,7 @@ for post in post_list:
     tr = post.find_all("tr")
     for t in tr:
         links = t.find("td", {"class" : "main-link"})
-        link = links.find('a')['href']
+        link = links.find("a")["href"]
         post_links.append(link)
 
 # Checking the total posts number
@@ -93,7 +91,6 @@ print(len(post_links))
 # Keeping all the post links to a new CSV for future reference
 post_urls = DataFrame(post_links)
 post_urls.to_csv('url_links.csv', header = True)
-
 
 def extract_data_from_webpage():
     """
@@ -148,7 +145,8 @@ def extract_data_from_webpage():
         browser.quit()
 
         # Storing all the data as a dictionary
-        all_data = {"user_id": user_id,
+        all_data = {
+                "user_id": user_id,
                 "post_title" : title,
                 "post_desc" : post_text
                }
@@ -156,11 +154,11 @@ def extract_data_from_webpage():
 
     # Creating a dataframe and exporting the data as a CSV file for future use.
     data = DataFrame(data)
-    data.to_csv('posts.csv', header=True)
+    data.to_csv('posts.csv', header = True)
 
+    
 # Calling the method to perform web scraping
 extract_data_from_webpage()
-
 
 
 """
@@ -173,7 +171,6 @@ corpus = df['post_desc']
 
 # All the posts had this line mentioned below. So removing this line from all the posts.
 content = "\nYou have selected 0 posts.\n\n, \n\n      select all\n    \n, \n\n    cancel selecting\n  \n, "
-
 
 def utils_preprocess_text(text, lst_stopwords=None):
     """
@@ -211,14 +208,13 @@ def utils_preprocess_text(text, lst_stopwords=None):
 # Creating a new column in the dataframe of the preprocessed text
 df['text_clean'] = df['post_desc'].apply(lambda x: utils_preprocess_text(x, lst_stopwords=None))
 # Dropping the NaN values
-df.dropna(inplace=True)
+df.dropna(inplace = True)
 
 # Using wordcloud for the visual representation of the corpus
 corpus = ','.join(list(df['text_clean'].values))
-wordcloud = WordCloud(background_color="white", max_words=5000, contour_width=3, contour_color='steelblue')
+wordcloud = WordCloud(background_color = "white", max_words = 5000, contour_width = 3, contour_color = 'steelblue')
 wordcloud.generate(corpus)
 wordcloud.to_image()
-
 
 def sent_to_words(sentences):
     """
@@ -229,7 +225,6 @@ def sent_to_words(sentences):
         Return:
             Returns the tokenized text
     """
-
     for sentence in sentences:
         yield (gensim.utils.simple_preprocess(str(sentence), deacc=True))
 
@@ -237,9 +232,8 @@ def sent_to_words(sentences):
 data = df.text_clean.values.tolist()
 data_words = list(sent_to_words(data))
 
-
 # Initialize spacy 'en' model, keeping only tagger component needed for lemmatization
-nlp = spacy.load("en_core_web_sm", disable=['parser', 'ner'])
+nlp = spacy.load("en_core_web_sm", disable = ['parser', 'ner'])
 
 
 def lemmatization(texts, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']):
@@ -263,7 +257,6 @@ def lemmatization(texts, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']):
 
 data_lemmatized = lemmatization(data_words, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV'])
 
-
 # Applying LDA Model
 # Create Dictionary and corpus for the LDA Model
 id2word = corpora.Dictionary(data_lemmatized)
@@ -271,29 +264,23 @@ texts = data_lemmatized
 # Term Document Frequency
 corpus = [id2word.doc2bow(text) for text in texts]
 
-
 # Build LDA model
-lda_model = gensim.models.LdaMulticore(corpus=corpus,
-                                       id2word=id2word,
-                                       num_topics=10,
-                                       random_state=100,
-                                       chunksize=100,
-                                       passes=10,
-                                       per_word_topics=True)
-
-
+lda_model = gensim.models.LdaMulticore(corpus = corpus,
+                                       id2word = id2word,
+                                       num_topics = 10,
+                                       random_state = 100,
+                                       chunksize = 100,
+                                       passes = 10,
+                                       per_word_topics = True)
 
 # Print the Keyword in the 10 topics
 pprint(lda_model.print_topics())
 doc_lda = lda_model[corpus]
 
-
 # Compute Coherence Score
-coherence_model_lda = CoherenceModel(model=lda_model, texts=data_lemmatized, dictionary=id2word, coherence='c_v')
+coherence_model_lda = CoherenceModel(model = lda_model, texts = data_lemmatized, dictionary = id2word, coherence = 'c_v')
 coherence_lda = coherence_model_lda.get_coherence()
 print('Coherence Score: ', coherence_lda)
-
-
 
 # Visualize the topics
 pyLDAvis.enable_notebook()
